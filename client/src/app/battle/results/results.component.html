@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row_container">
+    <div class="inner_container">
+      <h1 class="first_place">1st Place</h1>
+      <h3 class="first_place" *ngIf="player1.score > player2.score">{{ player1.username }} (Score: {{ player1.score }})</h3>
+      <h3 class="first_place" *ngIf="player2.score >= player1.score">{{ player2.username }} (Score: {{ player2.score }})</h3>
+      <h1 class="second_place">2nd Place</h1>
+      <h3 class="second_place" *ngIf="player1.score > player2.score">{{ player2.username }} (Score: {{ player2.score }})</h3>
+      <h3 class="second_place" *ngIf="player2.score >= player1.score">{{ player1.username }} (Score: {{ player1.score }})</h3>
+    </div>
+    <img *ngIf="player1.score > player2.score" src="{{ player1.avatar_url }}" alt="{{ player1.username }} Avatar Image" />
+    <img *ngIf="player2.score >= player1.score" src="{{ player2.avatar_url }}" alt="{{ player2.username }} Avatar Image" />
+  </div>
+  <p class="button_container">
+    <button type="button" id="reset_btn" (click)="onClickResetButton()">Reset</button>
+  </p>
+</div>

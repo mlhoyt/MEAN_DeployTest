@@ -1,0 +1,51 @@
+* {
+  font-family: sans-serif;
+}
+
+div.container {
+  padding: 8px;
+}
+
+div.inner_container {
+  display: inline-block;
+  vertical-align: top;
+  width: 420px;
+}
+
+.first_place {
+  color: green;
+}
+
+.second_place {
+  color: red;
+}
+
+img {
+  display: inline-block;
+  vertical-align: top;
+  height: 180px;
+}
+
+h1 {
+  margin: 16px 0;
+}
+
+h3 {
+  margin: 12px 0;
+}
+
+.button_container {
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+button#reset_btn {
+  border: 1px solid black;
+  width: 200px;
+  height: 30px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  box-shadow: 4px 4px 2px rgb( 169, 169, 169 );
+}

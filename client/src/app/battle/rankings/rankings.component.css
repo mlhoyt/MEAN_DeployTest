@@ -1,0 +1,50 @@
+* {
+  font-family: sans-serif;
+}
+
+div.container {
+  height: 410px;
+  overflow: auto;
+}
+
+div.player_container {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+span.rank {
+  display: inline-block;
+  vertical-align: top;
+  width: 50px;
+  font-size: 150%;
+  font-weight: bold;
+}
+
+div.avatar_container {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+  width: 300px;
+  border: 1px solid black;
+  padding: 8px;
+}
+
+img {
+  display: block;
+  height: 150px;
+  margin: 0 auto;
+}
+
+span.username {
+  display: block;
+  text-align: center;
+}
+
+span.score {
+  display: inline-block;
+  vertical-align: top;
+  width: 250px;
+  font-size: 150%;
+  font-weight: bold;
+  margin-left: 10px;
+}

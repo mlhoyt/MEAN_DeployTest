@@ -1,0 +1,129 @@
+- [x] Update player.component to show error message if isInvalid
+- [x] Update player.component to show avatar if isLoaded
+- [x] Update select.component to show "Battle" button if both players isLoaded
+- [x] Update battle.component to store new users to database
+- [x] Test have_player correctly pulls from database when applicable
+- [x] Create, build-out, test results component
+- [x] Create, build-out, test rankings component
+- [x] Remove battle.component.html (data structure) debug output
+- [x] Change from passing data/events to using CommunicateService/Observable
+  - [x] `ng generate service player1-data`
+  - [x] Change `player1` from passed data to using `Player1DataService`:
+    - [x] Edit `src/app/player1-data.service.ts`:
+      - [x] Leverage from boiler-plate
+    - [x] Edit `src/app/app.module.ts`
+      - [x] Register `Player1DataService`
+    - [x] Edit `src/app/battle/battle.component.ts`
+      - [x] Import/Inject `Player1DataService`
+      - [x] Change `player1` to be associated with `Player1DataService`
+    - [x] Edit `src/app/battle/battle.component.html`
+      - [x] Remove `... [player1]="player1" ...` data passing
+    - [x] Update `src/app/battle/select/select.component.ts`:
+
+      ```typescript
+       ...
+      +import { OnDestroy } from '@angular/core';
+       ...
+      +import { Player1DataService } from '../../player1-data.service';
+      +import { Subscription } from 'rxjs/Subscription';
+
+       ...
+      -export class SelectComponent implements OnInit {
+      +export class SelectComponent implements OnInit, OnDestroy {
+      -  @Input() player1: Player;
+      +  player1: Player;
+         @Input() player2: Player;
+         @Output() get_user_event = new EventEmitter();
+
+      +  p1subscription: Subscription;
+
+         constructor(
+      +    private _player1DataService: Player1DataService,
+         )
+         {
+      +    this.p1subscription = this._player1DataService.subject
+      +      .subscribe( data => { this.player1 = data; }, err => {}, () => {} );
+         }
+         ...
+      +  ngOnDestroy() {
+      +    this.p1subscription.unsubscribe();
+      +  }
+         ...
+      ```
+
+    - [x] Update `src/app/battle/results/results.component.ts`:
+
+      ```typescript
+      ... See changes above ...
+      ```
+
+  - [x] `ng generate service player2-data`
+  - [x] Change `player2` from passed data to using `Player2DataService`:
+    - [x] Edit `src/app/player2-data.service.ts`:
+      - [x] Leverage from boiler-plate
+    - [x] Edit `src/app/app.module.ts`
+      - [x] Register `Player2DataService`
+    - [x] Edit `src/app/battle/battle.component.ts`
+      - [x] Import/Inject `Player2DataService`
+      - [x] Change `player2` to be associated with `Player2DataService`
+    - [x] Edit `src/app/battle/battle.component.html`
+      - [x] Remove `... [player2]="player2" ...` data passing
+    - [x] Update `src/app/battle/select/select.component.ts`:
+
+      ```typescript
+       ... See changes above ...
+      ```
+
+    - [x] Update `src/app/battle/results/results.component.ts`:
+
+      ```typescript
+      ... See changes above ...
+      ```
+
+  - [x] `ng generate service all-players-data`
+  - [x] Change `all_players` from passed data to using `AllPlayersDataService`:
+    - [x] Edit `src/app/all-players-data.service.ts`:
+      - [x] Leverage from boiler-plate
+    - [x] Edit `src/app/app.module.ts`
+      - [x] Register `AllPlayersDataService`
+    - [x] Edit `src/app/battle/battle.component.ts`
+      - [x] Import/Inject `AllPlayersDataService`
+      - [x] Change `all_players` to be associated with `AllPlayersDataService`
+    - [x] Edit `src/app/battle/battle.component.html`
+      - [x] Remove `... [all_players]="all_players" ...` data passing
+    - [x] Update `src/app/battle/rankings/rankings.component.ts`:
+
+      ```typescript
+       ... See changes above ...
+      ```
+
+  - [x] Remove passed event/s
+    - [x] Edit `src/app/battle/battle.component.html`: Remove passed event/s
+    - [x] Edit `src/app/battle/battle.component.ts`: Remove github-api.service injection/use
+    - [x] Edit `src/app/battle/select/select.component.ts`: Add github-api.service injection/use
+    - [x] Edit `src/app/battle/battle.component.ts`: Remove have_player, get_user
+    - [x] Edit `src/app/battle/select/select.component.ts`: Add player-api.service, have_player, get_user
+
+- [x] Add front-end routing for select.component, results.component, rankings.component
+  - [x] Create `src/app/app-routing.module.ts`:
+
+  ```typescript
+  import { NgModule } from '@angular/core';
+  import { Routes, RouterModule } from '@angular/router';
+  // import { {{COMP}}Component } from '.../{{COMP}}/{{COMP}}.component';
+
+  const routes: Routes = [
+    // { path: '{{URL}}', pathMatch: 'full', {{COMP}}Component },
+  ];
+
+  @NgModule({
+    imports: [ RouterModule.forRoot( routes ) ],
+    exports: [ RouterModule ]
+  })
+  export class RoutingModule {}
+  ```
+
+- [x] Enable select.component 'Battle' button
+- [x] Enable results.component 'Reset' button
+- [x] Enable battle.component 'Battle' link
+- [x] Enable battle.component 'Rankings' link

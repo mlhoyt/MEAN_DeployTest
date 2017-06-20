@@ -1,0 +1,21 @@
+app-player {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.spacer {
+  display: inline-block;
+  width: 10px;
+}
+
+button#battle_btn {
+  display: block;
+  margin-top: 10px;
+  border: 1px solid black;
+  width: 702px;
+  height: 30px;
+  background-color: orange;
+  color: white;
+  box-shadow: 4px 4px 2px rgb( 169, 169, 169 );
+  font-size: 120%;
+}

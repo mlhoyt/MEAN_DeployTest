@@ -1,0 +1,4 @@
+<app-player [label]="1" [player]="player1" (get_user_event)="get_user($event)"></app-player
+><span class="spacer"></span
+><app-player [label]="2" [player]="player2" (get_user_event)="get_user($event)"></app-player>
+<button *ngIf="player1.isLoaded && player2.isLoaded" type="button" id="battle_btn" (click)="onClickBattleButton()">Battle!</button>

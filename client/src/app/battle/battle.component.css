@@ -1,0 +1,19 @@
+* {
+  font-family: sans-serif;
+}
+
+div.container {
+  border: 1px solid black;
+  width: 702px; /* 720 - 8 - 8 - 1 - 1 */
+  padding: 8px;
+}
+
+header h1 {
+  display: inline-block;
+  width: 500px;
+}
+
+header p {
+  display: inline-block;
+  font-size: 150%;
+}

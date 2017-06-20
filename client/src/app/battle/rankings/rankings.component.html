@@ -1,0 +1,11 @@
+<h2>Rankings</h2>
+<div class="container">
+  <div *ngFor="let player of all_players; let i = index" class="player_container">
+    <span class="rank">{{ i + 1 }}</span>
+    <div class="avatar_container">
+      <img src="{{ player.avatar_url }}" alt="Player {{ player.username }} Avatar Image" />
+      <span class="username">{{ player.username }}</span>
+    </div>
+    <span class="score">Score: {{ player.score }}</span>
+  </div>
+</div>

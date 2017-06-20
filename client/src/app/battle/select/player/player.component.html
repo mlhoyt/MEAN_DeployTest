@@ -1,0 +1,18 @@
+<div *ngIf="!player.isLoaded" class="container">
+  <h2>Player {{ label }}</h2>
+  <form #usernameForm="ngForm" (submit)="onClickGetUser()">
+    <div class="row_container">
+      <label for="username">Github Username:</label>
+      <input type="text" name="username" [(ngModel)]="player.username" placeholder="Enter username" required minlength="1" />
+    </div>
+    <p id="submit_error_msg">
+      <span *ngIf="player.isInvalid">{{ error_msg }}</span>
+      <span *ngIf="!player.isInvalid">&nbsp;</span>
+    </p>
+    <input type="submit" name="submit" value="Get User" [disabled]="!usernameForm.form.valid" />
+  </form>
+</div
+><div *ngIf="player.isLoaded" class="container">
+  <img class="avatar" src="{{ player.avatar_url }}" alt="{{ player.username }} Github Avatar Image" />
+  <p class="avatar">{{ player.username }}</p>
+</div>
