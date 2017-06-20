@@ -1,0 +1,3 @@
+# -*- shell -*-
+
+nodemon server.js
